@@ -10,7 +10,7 @@ interface IBadge {
 }
 
 const post = tv({
-	base: 'w-1/4 m-auto rounded-xl p-layout justify-center align-items-center flex flex-col mb-5',
+	base: 'w-1/4 m-auto rounded-md p-layout justify-center align-items-center flex flex-col mb-5',
 	variants: {
 		backgroundColor: {
 			regular: '',
@@ -34,7 +34,7 @@ export function Post({
 	style
 }: PropsWithChildren<IBadge>) {
 	return (
-		<div
+		<article
 			className={post({
 						backgroundColor: variant as "highlight" | "regular",
 						shadow: variant as "highlight" | "regular",
@@ -42,9 +42,7 @@ export function Post({
 					})}
 			style={style}
 		>
-			<br/>
 			{postData.content}
-			<br/>
-		</div>
+		</article>
 	)
 }

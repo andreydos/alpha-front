@@ -6,10 +6,8 @@ class PostService {
 	private BASE_URL = '/posts';
 
 	async getRecentPosts() {
-		console.log('getRecentPosts called')
 		try {
 			const response = await axiosWithAuth.get<IPaginationPage<IPostResponse>>(this.BASE_URL + '?size=30&page=1');
-			console.log('getRecentPosts response:', response?.data?.data);
 			if (response?.data?.data) {
 				return response.data.data
 			} else {

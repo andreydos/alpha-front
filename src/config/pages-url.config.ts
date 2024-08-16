@@ -1,9 +1,10 @@
 class ALPHA {
-	private root = 'app'
+	private root = '/'
 
-	HOME = this.root
-	TIME_BLOCKING = `${this.root}/time-blocking`
-	SETTINGS = `${this.root}/settings`
+	ROOT = this.root
+	APP = this.root + 'app'
+	TIME_BLOCKING = `${this.APP}/time-blocking`
+	SETTINGS = `${this.APP}/settings`
 }
 
 export const APP_PAGES = new ALPHA()

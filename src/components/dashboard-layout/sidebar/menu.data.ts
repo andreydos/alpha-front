@@ -11,7 +11,7 @@ import type { IMenuItem } from './menu.interface'
 export const MENU: IMenuItem[] = [
 	{
 		icon: LayoutDashboard,
-		link: APP_PAGES.HOME,
+		link: APP_PAGES.APP,
 		name: 'Dashboard'
 	},
 	{
