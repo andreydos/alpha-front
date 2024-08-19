@@ -3,16 +3,17 @@ import axios, { type CreateAxiosDefaults } from 'axios'
 
 import { errorCatch } from './error'
 import {
-	getAccessToken,
+	// getAccessToken,
 	removeFromStorage
 } from '@/services/auth-token.service'
+import { removeAccessToken, removeRefreshToken, getAccessToken } from "@/auth-actions"
 
 const options: CreateAxiosDefaults = {
 	baseURL: process.env.API_URL || 'http://localhost:4200/api',
 	headers: {
 		'Content-Type': 'application/json'
 	},
-	withCredentials: true
+	// withCredentials: true
 }
 
 const axiosClassic = axios.create(options)
@@ -47,7 +48,10 @@ axiosWithAuth.interceptors.response.use(
 				await authService.getNewTokens()
 				return axiosWithAuth.request(originalRequest)
 			} catch (error) {
-				if (errorCatch(error) === 'jwt expired') removeFromStorage()
+				if (errorCatch(error) === 'jwt expired') {
+					await removeAccessToken()
+					await removeRefreshToken()
+				}
 			}
 		}
 

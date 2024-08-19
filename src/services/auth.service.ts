@@ -2,35 +2,37 @@ import { IAuthForm, IAuthResponse } from '@/types/auth.types'
 
 import { axiosClassic } from '@/api/interceptors'
 
-import { removeFromStorage, saveTokenStorage } from './auth-token.service'
+// import { removeFromStorage, saveTokenStorage } from './auth-token.service'
+import { removeAccessToken, removeRefreshToken, setAccessToken } from "@/auth-actions"
+
+export enum EnumTokens {
+	'ACCESS_TOKEN' = 'accessToken',
+	'REFRESH_TOKEN' = 'refreshToken'
+}
 
 export const authService = {
-	async main(type: 'login' | 'register', data: IAuthForm) {
+	async loginWithFirebaseToken(tokenFromFirebase: string) {
 		const response = await axiosClassic.post<IAuthResponse>(
-			`/auth/${type}`,
-			data
+			'/auth/login/firebase',
+			{idToken: tokenFromFirebase}
 		)
 
-		if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
-
-		return response
+		if (response.data.accessToken) {
+			await setAccessToken(response.data.accessToken)
+			return true;
+		}
 	},
 
-	async getNewTokens() {
-		const response = await axiosClassic.post<IAuthResponse>(
-			'/auth/login/access-token'
-		)
-
-		if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
-
-		return response
+	async getNewTokens () {
+		// const response = await axiosClassic.get('/auth/new-tokens')
 	},
 
 	async logout() {
-		const response = await axiosClassic.post<boolean>('/auth/logout')
-
-		if (response.data) removeFromStorage()
-
-		return response
+		// const response = await axiosClassic.post<boolean>('/auth/logout') //TODO: logout on server
+		//
+		// if (response.data) {
+			await removeAccessToken()
+			await removeRefreshToken()
+		// }
 	}
 }

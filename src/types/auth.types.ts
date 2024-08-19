@@ -1,6 +1,12 @@
+import { User } from "firebase/auth"
+
 export interface IAuthForm {
 	email: string
 	password: string
+}
+
+export interface GoogleUser extends User {
+	accessToken: string
 }
 
 export interface IUser {

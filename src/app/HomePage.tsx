@@ -2,13 +2,13 @@ import {postService} from "@/services/post.service";
 import {IPostResponse} from "@/types/post.types";
 import {Post} from "@/components/ui/post/Post";
 import Cookies from 'js-cookie'
-import { SESSION_COOKIE_NAME } from "@/constants"
 import { Header } from "@/components/Header"
+import { EnumTokens } from "@/services/auth.service"
+import { getAccessToken } from "@/auth-actions"
 
 export default async function HomePage() {
 	let posts: IPostResponse[] = [];
-	const session = Cookies.get(SESSION_COOKIE_NAME) || null;
-	console.log('session: ' + session?.toString());
+	const session = await getAccessToken();
 
 	try {
 		const data = await postService.getRecentPosts();

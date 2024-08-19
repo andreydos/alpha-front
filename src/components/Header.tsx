@@ -1,27 +1,35 @@
 'use client';
 
 import { useUserSession } from "@/hooks/useUserSession"
-import { signInWithGoogle, signOutWithGoogle } from "@/libs/firebase/auth"
-import { createSession, removeSession } from "@/auth-actions"
+import { signInWithApple, signInWithGoogle, signOutWithGoogle } from "@/libs/firebase/auth"
+import { authService } from "@/services/auth.service"
+import { toast } from "sonner"
 
 interface IHeader {
 	session?: any
 }
 
 export function Header({ session }: IHeader) {
-	console.log('session Header component: ' + (session ? session.toString() : `null`));
 	const userSessionId = useUserSession(session);
 
 	const handleSignIn = async () => {
-		const userUid = await signInWithGoogle();
-		if (userUid) {
-			await createSession(userUid);
+		try {
+			const userToken = await signInWithApple()
+			// const userToken = await signInWithGoogle();
+			// @ts-ignore
+			if (userToken) {
+				await authService.loginWithFirebaseToken(userToken)
+			} else {
+				toast.error('Виникла помилка при вході')
+			}
+		} catch (e) {
+			console.log(e)
 		}
 	};
 
 	const handleSignOut = async () => {
 		await signOutWithGoogle();
-		await removeSession();
+		await authService.logout();
 	};
 
 	if (!userSessionId) {

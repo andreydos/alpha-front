@@ -3,11 +3,11 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-import { SESSION_COOKIE_NAME } from '@/constants';
 import { APP_PAGES } from './config/pages-url.config'
+import { EnumTokens } from "@/services/auth.service"
 
-export async function createSession(uid: string) {
-	cookies().set(SESSION_COOKIE_NAME, uid, {
+export async function setAccessToken(uid: string) {
+	cookies().set(EnumTokens.ACCESS_TOKEN, uid, {
 		httpOnly: true,
 		secure: process.env.NODE_ENV === 'production',
 		maxAge: 60 * 60 * 24, // One day
@@ -17,8 +17,17 @@ export async function createSession(uid: string) {
 	redirect(APP_PAGES.APP);
 }
 
-export async function removeSession() {
-	cookies().delete(SESSION_COOKIE_NAME);
+export async function getAccessToken() {
+	const accessToken = cookies().get(EnumTokens.ACCESS_TOKEN)
+	return accessToken || null
+}
+
+export async function removeAccessToken() {
+	cookies().delete(EnumTokens.ACCESS_TOKEN);
+}
+
+export async function removeRefreshToken() {
+	cookies().delete(EnumTokens.REFRESH_TOKEN);
 
 	redirect(APP_PAGES.ROOT);
 }

@@ -1,11 +1,8 @@
 import Cookies from 'js-cookie'
+import { EnumTokens } from "@/services/auth.service"
 
 const SAME_SITE_MODE = process.env.COOKIE_SAME_SITE_MODE as "strict" | "Strict" | "lax" | "Lax" | "none" | "None" | undefined
 
-export enum EnumTokens {
-	'ACCESS_TOKEN' = 'accessToken',
-	'REFRESH_TOKEN' = 'refreshToken'
-}
 
 export const getAccessToken = () => {
 	const accessToken = Cookies.get(EnumTokens.ACCESS_TOKEN)
