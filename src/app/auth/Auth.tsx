@@ -7,7 +7,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
 import { Heading } from '@/components/ui/Heading'
-import { Button } from '@/components/ui/buttons/Button'
+import { Button } from '@/components/ui/button/Button'
 import { Field } from '@/components/ui/fields/Field'
 
 import { IAuthForm } from '@/types/auth.types'

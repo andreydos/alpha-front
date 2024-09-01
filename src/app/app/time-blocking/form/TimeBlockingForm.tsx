@@ -1,6 +1,6 @@
 import { Controller, SubmitHandler, useFormContext } from 'react-hook-form'
 
-import { Button } from '@/components/ui/buttons/Button'
+import { Button } from '@/components/ui/button/Button'
 import { Field } from '@/components/ui/fields/Field'
 import { SingleSelect } from '@/components/ui/task-edit/SingleSelect'
 

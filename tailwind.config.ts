@@ -1,13 +1,15 @@
 import type { Config } from 'tailwindcss'
+const flowbite = require("flowbite-react/tailwind");
 import { COLORS } from './src/constants/color.constants'
 
 const config: Config = {
 	darkMode: 'class',
 	mode: 'jit',
 	content: [
+		flowbite.content(),
 		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
 		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
-		'./src/app/**/*.{js,ts,jsx,tsx,mdx}'
+		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
 		extend: {
@@ -146,16 +148,6 @@ const config: Config = {
 				inset: 'inset 0px 18px 22px',
 				darkinset: '0px 4px 4px inset'
 			},
-			backgroundImage: {
-				ballanceDashboard: "url('/src//public/img/dashboards/balanceImg.png')",
-				ellispisModeCarInterface:
-					"url('https://i.ibb.co/Y3nrFfd/elipse-light.png')",
-				ellispisModeCarInterfaceDark:
-					"url('https://i.ibb.co/g66yJnm/Ellipse-94.png')",
-				homeButton:
-					'linear-gradient(112.83deg, rgba(255, 255, 255, 0.52) 0%, rgba(255, 255, 255, 0) 110.84%)',
-				smartHomeDropzone: `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='13' ry='13' stroke='%23E0E5F2FF' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='5' stroke-linecap='square'/%3e%3c/svg%3e")`
-			}
 		},
 		screens: {
 			sm: '576px',
@@ -445,6 +437,6 @@ const config: Config = {
 			}
 		}
 	},
-	plugins: []
+	plugins: [flowbite.plugin()]
 }
 export default config

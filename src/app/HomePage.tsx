@@ -1,9 +1,7 @@
 import {postService} from "@/services/post.service";
 import {IPostResponse} from "@/types/post.types";
 import {Post} from "@/components/ui/post/Post";
-import Cookies from 'js-cookie'
-import { Header } from "@/components/Header"
-import { EnumTokens } from "@/services/auth.service"
+import { Header } from "@/components/Header/Header"
 import { getAccessToken } from "@/auth-actions"
 
 export default async function HomePage() {
@@ -18,7 +16,7 @@ export default async function HomePage() {
 			throw new Error('Recent posts must be an array')
 		}
 	} catch (error) {
-		console.error('Error fetching posts:', error); // Log any errors
+		console.error('Error fetching posts:', error);
 	}
 
 	return (

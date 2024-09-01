@@ -10,6 +10,8 @@ export function useUserSession(InitSession: string | null) {
 		const unsubscribe = onAuthStateChanged(async (authUser) => {
 			if (authUser) {
 				setUserUid(authUser.uid);
+			} else if (InitSession === 'fake_storybook_session') {
+				setUserUid('Fake User');
 			} else {
 				setUserUid(null);
 			}

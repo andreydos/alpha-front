@@ -3,6 +3,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { PropsWithChildren, useState } from 'react'
+import { Flowbite } from "flowbite-react";
 
 export function Providers({ children }: PropsWithChildren) {
 	const [client] = useState(
@@ -17,8 +18,10 @@ export function Providers({ children }: PropsWithChildren) {
 
 	return (
 		<QueryClientProvider client={client}>
-			{children}
-			<ReactQueryDevtools initialIsOpen={false} />
+			<Flowbite>
+				{children}
+				<ReactQueryDevtools initialIsOpen={false} />
+			</Flowbite>
 		</QueryClientProvider>
 	)
 }
