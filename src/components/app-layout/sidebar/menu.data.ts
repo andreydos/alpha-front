@@ -12,16 +12,16 @@ export const MENU: IMenuItem[] = [
 	{
 		icon: LayoutDashboard,
 		link: APP_PAGES.APP,
-		name: 'Dashboard'
+		name: 'Стрічка'
 	},
 	{
 		icon: CalendarRange,
-		link: APP_PAGES.TIME_BLOCKING,
-		name: 'Time blocking'
+		link: APP_PAGES.APP,
+		name: 'Збережені дописи'
 	},
 	{
 		icon: Settings,
-		link: APP_PAGES.SETTINGS,
-		name: 'Settings'
+		link: APP_PAGES.APP,
+		name: 'Налаштування'
 	}
 ]

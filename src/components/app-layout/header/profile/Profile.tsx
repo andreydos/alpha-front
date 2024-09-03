@@ -1,6 +1,6 @@
 'use client'
 
-import { LogoutButton } from '@/components/dashboard-layout/sidebar/LogoutButton'
+import { LogoutButton } from '@/components/app-layout/sidebar/LogoutButton'
 import Loader from '@/components/ui/Loader'
 
 import { useProfile } from '@/hooks/useProfile'

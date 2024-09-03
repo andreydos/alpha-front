@@ -1,7 +1,7 @@
 export interface IBase {
-	id: string
-	createdAt?: string
-	updatedAt?: string
+	id: string | number;
+	createdAt?: string;
+	updatedAt?: string;
 }
 
 export interface IPaginationPage<R> {

@@ -11,23 +11,8 @@ import { MENU } from './menu.data'
 
 export function Sidebar() {
 	return (
-		<aside className='border-r border-r-border h-full  flex flex-col justify-between'>
+		<aside style={{zIndex: 1}} className='fixed shadow w-64 pt-10 dark:bg-gray-700 border-r border-r-border h-full  flex flex-col justify-between'>
 			<div>
-				<Link
-					href='/'
-					className='flex items-center gap-2.5 p-layout border-b border-b-border'
-				>
-					<GanttChartSquare
-						color={COLORS.primary}
-						size={38}
-					/>
-					<span className='text-2xl font-bold relative'>
-						D_Planner
-						<span className='absolute -top-1 -right-2 text-xs opacity-40 rotate-[18deg] font-normal'>
-							beta
-						</span>
-					</span>
-				</Link>
 				<div className='p-3 relative'>
 					{MENU.map(item => (
 						<MenuItem
@@ -38,7 +23,7 @@ export function Sidebar() {
 				</div>
 			</div>
 			<footer className='text-xs opacity-40 font-normal text-center p-layout'>
-				Keep track of time
+				Alpha
 			</footer>
 		</aside>
 	)

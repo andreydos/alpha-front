@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { Heading } from '@/components/ui/Heading'
 import { Button } from '@/components/ui/button/Button'
 import { Field } from '@/components/ui/fields/Field'
 
@@ -51,36 +50,12 @@ export function Auth() {
 				className='sm:w-1/1 md:w-1/2 xl:w-1/3 m-auto shadow bg-sidebar rounded-xl p-layout'
 				onSubmit={handleSubmit(onSubmit)}
 			>
-				<Heading title='Login or register' />
+				<p style={{color: 'white'}}>Password restore will be here</p>
 
-				<Field
-					id='email'
-					label='Email:'
-					placeholder='Enter email:'
-					type='email'
-					extra='mb-4'
-					autoComplete="username"
-					{...register('email', {
-						required: 'Email is required!'
-					})}
-				/>
-
-				<Field
-					id='password'
-					label='Password: '
-					placeholder='Enter password: '
-					type='password'
-					{...register('password', {
-						required: 'Password is required!'
-					})}
-					extra='mb-6'
-					autoComplete="current-password"
-				/>
-
-				<div className='flex items-center gap-5 justify-center'>
-					<Button onClick={() => setIsLoginForm(true)}>Login</Button>
-					<Button onClick={() => setIsLoginForm(false)}>Register</Button>
-				</div>
+				{/*<div className='flex items-center gap-5 justify-center'>*/}
+				{/*	<Button onClick={() => setIsLoginForm(true)}>Login</Button>*/}
+				{/*	<Button onClick={() => setIsLoginForm(false)}>Register</Button>*/}
+				{/*</div>*/}
 			</form>
 		</div>
 	)

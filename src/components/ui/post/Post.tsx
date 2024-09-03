@@ -10,7 +10,7 @@ interface IBadge {
 }
 
 const post = tv({
-	base: 'w-1/4 m-auto rounded-md p-layout justify-center align-items-center flex flex-col mb-5',
+	base: 'w-full rounded-md p-layout justify-center align-items-center flex flex-col mb-8 dark:bg-gray-700 dark:text-gray-100',
 	variants: {
 		backgroundColor: {
 			regular: '',
@@ -38,7 +38,7 @@ export function Post({
 			className={post({
 						backgroundColor: variant as "highlight" | "regular",
 						shadow: variant as "highlight" | "regular",
-						className
+						className,
 					})}
 			style={style}
 		>

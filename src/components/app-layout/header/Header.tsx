@@ -8,7 +8,9 @@ import { signInWithApple, signInWithGoogle, signOutWithGoogle } from "@/libs/fir
 import { DarkThemeToggle } from "flowbite-react"
 import { authService } from "@/services/auth.service"
 import { toast } from "sonner"
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, GanttChartSquare } from "lucide-react"
+import { COLORS } from "@/constants/color.constants"
+import Link from "next/link"
 
 export interface HeaderProps {
   /**
@@ -55,12 +57,20 @@ export const Header = ({ onLogin, onLogout, onCreateAccount, session }: HeaderPr
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>
-        <div>
-          <img src="img/icons/AlphaLogo.svg" alt="Alpha Icon" />
+        <div className="relative">
+          <Link
+            href="/"
+            className="flex items-center border-b border-b-border"
+          >
+            <img src="img/icons/AlphaLogo.svg" alt="Alpha Icon" />
+						<span className="absolute -top-3 -right-4 text-xs opacity-40 rotate-[18deg] font-normal dark:text-gray-100">
+							beta
+						</span>
+          </Link>
           <h1 className="hidden">Alpha соцмережа</h1>
         </div>
-        <div className={'flex self-center'}>
-          <DarkThemeToggle iconDark={Sun} iconLight={Moon} className={'focus:ring-1'} />
+        <div className={"flex self-center"}>
+        <DarkThemeToggle iconDark={Sun} iconLight={Moon} className={'focus:ring-1'} />
           <div className={'flex self-center'}>
             {userSessionId ? (
               <Button pill size={'xs'} color="gray" onClick={handleSignOut}>Вийти</Button>

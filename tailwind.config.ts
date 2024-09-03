@@ -3,7 +3,7 @@ const flowbite = require("flowbite-react/tailwind");
 import { COLORS } from './src/constants/color.constants'
 
 const config: Config = {
-	darkMode: 'class',
+	darkMode: "selector",
 	mode: 'jit',
 	content: [
 		flowbite.content(),

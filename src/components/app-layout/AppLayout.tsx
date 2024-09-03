@@ -3,15 +3,15 @@ import type { PropsWithChildren } from 'react'
 import { Header } from './header/Header'
 import { Sidebar } from './sidebar/Sidebar'
 
-export default function DashboardLayout({
+export default function AppLayout({
 	children
 }: PropsWithChildren<unknown>) {
 	return (
-		<div className='grid min-h-screen 2xl:grid-cols-[1.1fr_6fr] grid-cols-[1.2fr_6fr]'>
+		<div className={'flex flex-row gap-1'}>
 			<Sidebar />
-
-			<main className='p-big-layout pt-8 overflow-x-hidden max-h-screen relative'>
-				<Header />
+			<Header />
+			<div className={'w-80'}></div>
+			<main className='m-auto p-big-layout mt-7 pl-20 lg:pl-16 pt-8 relative w-full dark:bg-gray-400'>
 				{children}
 			</main>
 		</div>

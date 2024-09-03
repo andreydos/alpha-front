@@ -30,7 +30,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 		<head>
-			<ThemeModeScript mode={'auto'}/>
+			<ThemeModeScript />
 		</head>
 		<body className={zen.className}>
 		<Providers>

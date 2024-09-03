@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react'
 
-import DashboardLayout from '@/components/dashboard-layout/DashboardLayout'
+import AppLayout from '@/components/app-layout/AppLayout'
 
 export default function Layout({ children }: PropsWithChildren<unknown>) {
-	return <DashboardLayout>{children}</DashboardLayout>
+	return <AppLayout>{children}</AppLayout>
 }

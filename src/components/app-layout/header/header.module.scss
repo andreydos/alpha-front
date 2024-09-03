@@ -1,0 +1,16 @@
+.header {
+  @apply fixed left-0 w-full bg-white shadow;
+  z-index: 2;
+}
+
+.headerContent {
+  @apply max-w-[900px] mx-auto w-full px-5 py-1 flex items-center justify-between;
+
+  button {
+    @apply ml-3;
+  }
+}
+
+:global(.dark) .header {
+  @apply bg-gray-800;
+}
