@@ -1,18 +1,9 @@
 import { Providers } from '@/app/providers'
 import { SITE_NAME } from '@/constants/seo.constants'
 import type { Metadata } from "next"
-import { Noto_Sans } from 'next/font/google'
 import "./globals.scss"
 import { Toaster } from 'sonner'
 import { ThemeModeScript } from "flowbite-react"
-
-const zen = Noto_Sans({
-	subsets: ['cyrillic', 'latin'],
-	weight: ['300', '400', '500', '600', '700'],
-	display: 'swap',
-	variable: '--font-zen',
-	style: ['normal']
-})
 
 export const metadata: Metadata = {
   title: {
@@ -29,19 +20,19 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-		<head>
-			<ThemeModeScript />
-		</head>
-		<body className={zen.className}>
-		<Providers>
-			{children}
-			<Toaster
-				theme='dark'
-				position='bottom-right'
-				duration={1500}
-			/>
-		</Providers>
-		</body>
+			<head>
+				<ThemeModeScript />
+			</head>
+			<body suppressHydrationWarning={true}>
+				<Providers>
+					{children}
+					<Toaster
+						theme='dark'
+						position='bottom-right'
+						duration={1500}
+					/>
+				</Providers>
+			</body>
 		</html>
 	);
 }

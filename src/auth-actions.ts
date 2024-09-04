@@ -19,7 +19,7 @@ export async function setAccessToken(uid: string) {
 
 export async function getAccessToken() {
 	const accessToken = cookies().get(EnumTokens.ACCESS_TOKEN)
-	return accessToken || null
+	return accessToken ? accessToken.value : null
 }
 
 export async function removeAccessToken() {

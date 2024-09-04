@@ -11,6 +11,7 @@ import { toast } from "sonner"
 import { Sun, Moon, GanttChartSquare } from "lucide-react"
 import { COLORS } from "@/constants/color.constants"
 import Link from "next/link"
+import { Profile } from "@/components/app-layout/header/profile/Profile"
 
 export interface HeaderProps {
   /**
@@ -70,7 +71,8 @@ export const Header = ({ onLogin, onLogout, onCreateAccount, session }: HeaderPr
           <h1 className="hidden">Alpha соцмережа</h1>
         </div>
         <div className={"flex self-center"}>
-        <DarkThemeToggle iconDark={Sun} iconLight={Moon} className={'focus:ring-1'} />
+          <Profile />
+          <DarkThemeToggle iconDark={Sun} iconLight={Moon} className={'focus:ring-1'} />
           <div className={'flex self-center'}>
             {userSessionId ? (
               <Button pill size={'xs'} color="gray" onClick={handleSignOut}>Вийти</Button>

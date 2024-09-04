@@ -12,14 +12,14 @@ export async function middleware(request: NextRequest) {
 
 	// Redirect to root if session is not set
 	if (!session && !notProtectedRoutes.includes(request.nextUrl.pathname)) {
-		const absoluteURL = new URL(APP_PAGES.ROOT, request.nextUrl.origin);
-		return NextResponse.redirect(absoluteURL.toString());
+		const absoluteURL = new URL(APP_PAGES.ROOT, request.nextUrl.origin)
+		return NextResponse.redirect(absoluteURL.toString())
 	}
 
 	// Redirect to app start page if session is set and user tries to access root
 	if (session && (request.nextUrl.pathname === APP_PAGES.ROOT || request.nextUrl.pathname.includes('/auth'))) {
-		const absoluteURL = new URL(APP_PAGES.APP, request.nextUrl.origin);
-		return NextResponse.redirect(absoluteURL.toString());
+		const absoluteURL = new URL(APP_PAGES.APP, request.nextUrl.origin)
+		return NextResponse.redirect(absoluteURL.toString())
 	}
 
 	return NextResponse.next()

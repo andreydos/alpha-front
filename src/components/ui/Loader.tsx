@@ -1,9 +1,9 @@
 import { Loader as LoaderIcon } from 'lucide-react'
 
-const Loader = () => {
+const Loader = ({darkClassName, lightClassName}: {darkClassName?: string, lightClassName?: string}) => {
 	return (
 		<div className='flex justify-center items-center'>
-			<LoaderIcon className='animate-spin h-6 w-6 text-white-gray-700 dark:text-gray-900' />
+			<LoaderIcon className={`animate-spin h-6 w-6 ${lightClassName || 'text-gray-700'} ${darkClassName || 'dark:text-gray-900'}`} />
 		</div>
 	)
 }
