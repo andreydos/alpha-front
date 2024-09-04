@@ -2,10 +2,6 @@ import { authService } from '@/services/auth.service'
 import axios, { type CreateAxiosDefaults } from 'axios'
 
 import { errorCatch } from './error'
-import {
-	// getAccessToken,
-	removeFromStorage
-} from '@/services/auth-token.service'
 import { removeAccessToken, removeRefreshToken, getAccessToken } from "@/auth-actions"
 
 const options: CreateAxiosDefaults = {
@@ -13,7 +9,7 @@ const options: CreateAxiosDefaults = {
 	headers: {
 		'Content-Type': 'application/json'
 	},
-	// withCredentials: true
+	withCredentials: true
 }
 
 const axiosClassic = axios.create(options)

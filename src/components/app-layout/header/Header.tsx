@@ -1,15 +1,12 @@
 'use client'
 
-import React, { useEffect } from "react"
+import React from "react"
 import { Button } from '@/components/ui/button/Button'
 import styles from './header.module.scss'
-import { useUserSession } from "@/hooks/useUserSession"
-import { signInWithApple, signInWithGoogle, signOutWithGoogle } from "@/libs/firebase/auth"
+import { signOutFirebaseAuth } from "@/libs/firebase/auth"
 import { DarkThemeToggle } from "flowbite-react"
 import { authService } from "@/services/auth.service"
-import { toast } from "sonner"
-import { Sun, Moon, GanttChartSquare } from "lucide-react"
-import { COLORS } from "@/constants/color.constants"
+import { Sun, Moon } from "lucide-react"
 import Link from "next/link"
 import { Profile } from "@/components/app-layout/header/profile/Profile"
 
@@ -33,25 +30,8 @@ export interface HeaderProps {
 }
 
 export const Header = ({ onLogin, onLogout, onCreateAccount, session }: HeaderProps) => {
-  const userSessionId = useUserSession(session);
-
-  const handleSignIn = async () => {
-    try {
-      // const userToken = await signInWithApple()
-      const userToken = await signInWithGoogle();
-      // @ts-ignore
-      if (userToken) {
-        await authService.loginWithFirebaseToken(userToken)
-      } else {
-        toast.error('Виникла помилка при вході')
-      }
-    } catch (e) {
-      console.log(e)
-    }
-  };
-
   const handleSignOut = async () => {
-    await signOutWithGoogle();
+    await signOutFirebaseAuth();
     await authService.logout();
   };
 
@@ -74,14 +54,7 @@ export const Header = ({ onLogin, onLogout, onCreateAccount, session }: HeaderPr
           <Profile />
           <DarkThemeToggle iconDark={Sun} iconLight={Moon} className={'focus:ring-1'} />
           <div className={'flex self-center'}>
-            {userSessionId ? (
-              <Button pill size={'xs'} color="gray" onClick={handleSignOut}>Вийти</Button>
-            ) : (
-              <>
-                <Button pill size={'xs'} color="gray" onClick={handleSignIn}>Вхід</Button>
-                {/*<Button primary size="small" onClick={onCreateAccount} label="Sign up" />*/}
-              </>
-            )}
+            <Button pill size={'xs'} color="gray" onClick={handleSignOut}>Вийти</Button>
           </div>
         </div>
       </div>

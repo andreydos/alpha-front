@@ -1,14 +1,16 @@
 'use client'
 
-import React, { useEffect } from "react"
+import React from "react"
 import { Button } from '@/components/ui/button/Button'
 import styles from './header.module.scss'
 import { useUserSession } from "@/hooks/useUserSession"
-import { signInWithApple, signInWithGoogle, signOutWithGoogle } from "@/libs/firebase/auth"
+import { signInWithApple, signInWithGoogle, signOutFirebaseAuth } from "@/libs/firebase/auth"
 import { DarkThemeToggle } from "flowbite-react"
 import { authService } from "@/services/auth.service"
 import { toast } from "sonner"
 import { Sun, Moon } from 'lucide-react';
+import { useRouter } from "next/navigation"
+import { APP_PAGES } from "@/config/pages-url.config"
 
 export interface HeaderProps {
   /**
@@ -31,14 +33,14 @@ export interface HeaderProps {
 
 export const Header = ({ onLogin, onLogout, onCreateAccount, session }: HeaderProps) => {
   const userSessionId = useUserSession(session);
+  const { push } = useRouter()
 
   const handleSignIn = async () => {
     try {
-      // const userToken = await signInWithApple()
-      const userToken = await signInWithGoogle();
-      // @ts-ignore
+      const userToken = await signInWithApple();
+
       if (userToken) {
-        await authService.loginWithFirebaseToken(userToken)
+        push(APP_PAGES.APP)
       } else {
         toast.error('Виникла помилка при вході')
       }
@@ -48,7 +50,7 @@ export const Header = ({ onLogin, onLogout, onCreateAccount, session }: HeaderPr
   };
 
   const handleSignOut = async () => {
-    await signOutWithGoogle();
+    await signOutFirebaseAuth();
     await authService.logout();
   };
 

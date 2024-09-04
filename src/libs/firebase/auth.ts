@@ -1,8 +1,7 @@
 import {
 	type User,
-
-	getAuth, OAuthProvider,
-
+	getAuth,
+	OAuthProvider,
 	GoogleAuthProvider,
 	signInWithPopup,
 	onAuthStateChanged as _onAuthStateChanged,
@@ -64,7 +63,7 @@ export async function signInWithGoogle() {
 	}
 }
 
-export async function signOutWithGoogle() {
+export async function signOutFirebaseAuth() {
 	try {
 		await firebaseAuth.signOut();
 	} catch (error) {

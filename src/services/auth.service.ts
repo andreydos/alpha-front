@@ -18,9 +18,10 @@ export const authService = {
 		)
 
 		if (response.data.accessToken) {
-			await setAccessToken(response.data.accessToken)
-			return true;
+			return response.data.accessToken;
 		}
+
+		return null
 	},
 
 	async getNewTokens () {

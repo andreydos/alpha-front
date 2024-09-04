@@ -2,6 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+const SAME_SITE_MODE = process.env.COOKIE_SAME_SITE_MODE as "strict" | "lax" | "none" | undefined
 
 import { APP_PAGES } from './config/pages-url.config'
 import { EnumTokens } from "@/services/auth.service"
@@ -12,6 +13,7 @@ export async function setAccessToken(uid: string) {
 		secure: process.env.NODE_ENV === 'production',
 		maxAge: 60 * 60 * 24, // One day
 		path: '/',
+		sameSite: SAME_SITE_MODE,
 	});
 
 	redirect(APP_PAGES.APP);

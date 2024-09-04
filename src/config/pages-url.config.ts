@@ -1,6 +1,5 @@
 class ALPHA {
 	private root = '/'
-
 	ROOT = this.root
 	APP = this.root + 'app'
 	TIME_BLOCKING = `${this.APP}/time-blocking`
