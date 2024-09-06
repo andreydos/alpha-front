@@ -1,5 +1,5 @@
 import { IPostResponse } from '@/types/post.types';
-import { axiosWithAuth } from '@/api/interceptors';
+import { axiosClassicServer, axiosWithAuth } from '@/api/interceptors';
 import { IPaginationPage } from "@/types/root.types";
 import { usePostStore } from "@/stores/postStore"
 
@@ -8,7 +8,7 @@ class PostService {
 
 	async getRecentPosts() {
 		try {
-			const response = await axiosWithAuth.get<IPaginationPage<IPostResponse>>(this.BASE_URL + '?size=30&page=1');
+			const response = await axiosClassicServer.get<IPaginationPage<IPostResponse>>(this.BASE_URL + '?size=30&page=1');
 			if (response?.data?.data) {
 				return response.data.data
 			} else {

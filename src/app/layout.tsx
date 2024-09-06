@@ -1,29 +1,39 @@
-import { Providers } from '@/app/providers'
-import { SITE_NAME } from '@/constants/seo.constants'
-import type { Metadata } from "next"
-import "./globals.scss"
-import { Toaster } from 'sonner'
 import { ThemeModeScript } from "flowbite-react"
+import type { Metadata } from "next"
+// import Script from "next/script"
+import { Toaster } from "sonner"
+
+import { SITE_NAME } from "@/constants/seo.constants"
+
+import "./globals.scss"
+import { Providers } from "@/app/providers"
 
 export const metadata: Metadata = {
-  title: {
-    default: SITE_NAME,
-    template: `%s | ${SITE_NAME}`
-  },
-  description: "Alpha",
-};
+	title: {
+		default: SITE_NAME,
+		template: `%s | ${SITE_NAME}`
+	},
+	description: "Alpha"
+}
 
 export default function RootLayout({
-  children,
+	children
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en">
+		<html lang='en'>
 			<head>
-				<ThemeModeScript />
+				{/*<Script*/}
+				{/*	src='./script.js'*/}
+				{/*	strategy='beforeInteractive'*/}
+				{/*/>*/}
+				<ThemeModeScript mode={"dark"} />
 			</head>
-			<body suppressHydrationWarning={true}>
+			<body
+				suppressHydrationWarning={true}
+				className={"dark:bg-gray-400"}
+			>
 				<Providers>
 					{children}
 					<Toaster
@@ -34,5 +44,5 @@ export default function RootLayout({
 				</Providers>
 			</body>
 		</html>
-	);
+	)
 }

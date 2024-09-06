@@ -5,7 +5,15 @@ const nextConfig = {
         CURRENT_DOMAIN: process.env.CURRENT_DOMAIN,
         COOKIE_SAME_SITE_MODE: process.env.COOKIE_SAME_SITE_MODE,
         API_URL: process.env.API_URL
-    }
+    },
+    async rewrites() {
+        return [
+            {
+                source: '/api/:path*',
+                destination: `${process.env.API_URL}/:path*`, // Use your API_URL from environment variables
+            },
+        ];
+    },
 };
 export default withSentryConfig(nextConfig, {
 // For all available options, see:

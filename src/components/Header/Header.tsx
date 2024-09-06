@@ -37,7 +37,7 @@ export const Header = ({ onLogin, onLogout, onCreateAccount, session }: HeaderPr
 
   const handleSignIn = async () => {
     try {
-      const userToken = await signInWithApple();
+      const userToken = await signInWithGoogle();
 
       if (userToken) {
         push(APP_PAGES.APP)

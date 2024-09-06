@@ -10,18 +10,25 @@ export interface GoogleUser extends User {
 }
 
 export interface IUser {
-	id: number
-	name?: string
+	id: string
+	createdDate: string
+	status: string
+	photo: string
+	name: string
+	about: string
 	email: string
-
-	workInterval?: number
-	breakInterval?: number
-	intervalsCount?: number
+	emailVerified: any
+	phone: any
+	phoneVerified: any
+	contactEmail: string
+	contactPhone: any
+	features: any[]
 }
 
 export interface IAuthResponse {
 	accessToken: string
+	refreshToken: string
 	user: IUser
 }
 
-export type TypeUserForm = Omit<IUser, 'id'> & { password?: string }
+export type TypeUserForm = Omit<IUser, "id"> & { password?: string }

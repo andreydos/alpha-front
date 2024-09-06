@@ -4,14 +4,23 @@ import axios, { type CreateAxiosDefaults } from 'axios'
 import { errorCatch } from './error'
 import { removeAccessToken, removeRefreshToken, getAccessToken } from "@/auth-actions"
 
-const options: CreateAxiosDefaults = {
-	baseURL: process.env.API_URL || 'http://localhost:4200/api',
+const serviceOptions: CreateAxiosDefaults = {
+	baseURL: process.env.API_URL,
 	headers: {
 		'Content-Type': 'application/json'
 	},
 	withCredentials: true
 }
 
+const options: CreateAxiosDefaults = {
+	baseURL: '/api',
+	headers: {
+		'Content-Type': 'application/json'
+	},
+	withCredentials: true
+}
+
+const axiosClassicServer = axios.create(serviceOptions)
 const axiosClassic = axios.create(options)
 const axiosWithAuth = axios.create(options)
 
@@ -55,4 +64,4 @@ axiosWithAuth.interceptors.response.use(
 	}
 )
 
-export { axiosClassic, axiosWithAuth }
+export { axiosClassic, axiosWithAuth, axiosClassicServer }
