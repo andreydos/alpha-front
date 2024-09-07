@@ -6,6 +6,18 @@ const nextConfig = {
         COOKIE_SAME_SITE_MODE: process.env.COOKIE_SAME_SITE_MODE,
         API_URL: process.env.API_URL
     },
+
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'd17zai2v3rbvry.cloudfront.net',
+                port: '',
+                pathname: '/**',
+            },
+        ],
+    },
+
     async rewrites() {
         return [
             {
