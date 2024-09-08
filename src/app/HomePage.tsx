@@ -26,8 +26,9 @@ export default async function HomePage() {
 			<div className='max-w-[900px] mx-auto w-full px-1 xs:px-2 sm:px-8 lg:px-0'>
 				<Header session={session}></Header>
 				<main className='flex flex-col max-h-screen overflow-auto'>
-					{posts.map(p => (
+					{posts.map((p, index) => (
 						<Post
+							index={index}
 							key={p.id}
 							postData={p}
 						></Post>

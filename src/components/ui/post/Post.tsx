@@ -10,6 +10,7 @@ interface IProps {
 	postData: IPostResponse
 	className?: string
 	variant?: string
+	index?: number
 	style?: CSSProperties
 }
 
@@ -36,6 +37,7 @@ export function Post({
 	postData,
 	className,
 	variant,
+	index,
 	style
 }: PropsWithChildren<IProps>) {
 	return (
@@ -53,6 +55,7 @@ export function Post({
 					<Image
 						width={postData.previewPhotoWidth}
 						height={postData.previewPhotoHeight}
+						priority={typeof index === "number" && index < 3} // only if it's first images
 						className={"absolute inset-0 w-full h-full object-cover"}
 						src={postData.previewPhotoUrl}
 						alt='зображення з допису'
