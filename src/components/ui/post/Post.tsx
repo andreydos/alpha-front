@@ -2,6 +2,7 @@ import Image from "next/image"
 import type { CSSProperties, PropsWithChildren } from "react"
 import { tv } from "tailwind-variants"
 
+import { PostFooter } from "@/components/ui/post/PostFooter"
 import { PostHeader } from "@/components/ui/post/PostHeader"
 
 import { IPostResponse } from "@/types/post.types"
@@ -67,6 +68,7 @@ export function Post({
 					{postData.content}
 				</p>
 			)}
+			<PostFooter postData={postData}></PostFooter>
 		</article>
 	)
 }

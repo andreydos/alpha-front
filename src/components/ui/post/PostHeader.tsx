@@ -34,7 +34,7 @@ export function PostHeader({ postData }: PropsWithChildren<IProps>) {
 			<div className='inline-flex items-center text-base font-semibold text-gray-900 dark:text-white'>
 				<button
 					className={
-						"focus:ring-1 w-12 h-12 rounded-full flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:dark:bg-gray-900 hover:border-gray-500 transition-colors duration-300"
+						"focus:ring-1 w-12 h-12 rounded-full flex items-center justify-center border border-gray-300 dark:border-gray-700 hover:dark:bg-gray-900 hover:border-gray-800 transition-colors duration-300"
 					}
 				>
 					<Ellipsis />
